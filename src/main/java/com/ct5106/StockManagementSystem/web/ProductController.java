@@ -1,8 +1,9 @@
 package com.ct5106.StockManagementSystem.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.web.bind.annotation.RestController;
+import com.ct5106.StockManagementSystem.domain.Department;
 import com.ct5106.StockManagementSystem.domain.Product;
 import com.ct5106.StockManagementSystem.domain.ProductRepository;
 
@@ -21,5 +22,6 @@ public class ProductController
 	{
 		return repository.findAll();
 	}
+	
 
 }

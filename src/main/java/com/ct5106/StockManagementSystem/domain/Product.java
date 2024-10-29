@@ -22,16 +22,20 @@ public class Product
 
 	private double price;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "department")
 	private Department department;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "manufacturer")
+	private Manufacturer manufacturer;
 
 	public Product()
 	{
 		// super();
 	}
 
-	public Product(String name, String description, String colour, String code,int quantityInStock, double price, Department department)
+	public Product(String name, String description, String colour, String code,int quantityInStock, double price, Department department, Manufacturer manufacturer)
 	{
 		super();
 		this.name = name;
@@ -41,6 +45,8 @@ public class Product
 		this.code = code;
 		this.price = price;
 		this.department = department;
+		this.manufacturer = manufacturer;
+		
 	}
 
 	public Long getId()
@@ -122,5 +128,15 @@ public class Product
 	public void setDepartment(Department department)
 	{
 		this.department = department;
+	}
+	
+	public Manufacturer getManufacturer()
+	{
+		return manufacturer;
+	}
+
+	public void setManufacturer(Manufacturer manufacturer)
+	{
+		this.manufacturer = manufacturer;
 	}
 }
