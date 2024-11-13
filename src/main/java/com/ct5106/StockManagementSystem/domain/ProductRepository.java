@@ -2,6 +2,7 @@ package com.ct5106.StockManagementSystem.domain;
 
 import java.util.List;
 
+
 import com.ct5106.StockManagementSystem.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

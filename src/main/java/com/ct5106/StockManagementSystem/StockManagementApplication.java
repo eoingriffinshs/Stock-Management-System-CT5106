@@ -2,10 +2,14 @@ package com.ct5106.StockManagementSystem;
 
 import org.slf4j.Logger;
 
+
+
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.ct5106.StockManagementSystem.domain.AppUser;
+import com.ct5106.StockManagementSystem.domain.AppUserRepository;
 import com.ct5106.StockManagementSystem.domain.Department;
 import com.ct5106.StockManagementSystem.domain.DepartmentRepository;
 import com.ct5106.StockManagementSystem.domain.Product;
@@ -23,14 +27,18 @@ public class StockManagementApplication implements CommandLineRunner
 	private final DepartmentRepository drepository;
 	
 	private final ManufacturerRepository mrepository;
+	
+	private final AppUserRepository urepository;
+
 
 	private static final Logger logger = LoggerFactory.getLogger(StockManagementApplication.class);
 
-	public StockManagementApplication(ProductRepository repository, DepartmentRepository drepository, ManufacturerRepository mrepository)
+	public StockManagementApplication(ProductRepository repository, DepartmentRepository drepository, ManufacturerRepository mrepository, AppUserRepository urepository)
 	{
 		this.repository = repository;
 		this.drepository = drepository;
 		this.mrepository = mrepository;
+		this.urepository = urepository;
 		
 	}
 
@@ -46,6 +54,13 @@ public class StockManagementApplication implements CommandLineRunner
 	@Override
 	public void run(String... args) throws Exception 
 	{
+		
+		// username, password, role
+		// "user", "user", "USER"
+		urepository.save(new AppUser("user","$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue","USER"));
+		// "admin", "admin", ADMIN"
+		urepository.save(new AppUser("admin","$2a$10$8cjz47bjbR4Mn8GMg9IZx.vyjhLXR/SKKMSZ9.mP9vpMu0ssKi8GW", "ADMIN"));
+		
 		logger.info("Starting the initialization of Products, Departments and Manufacturers...");
 		
 		Department department1 = new Department("Womens" , "Womens Clothes", 0.0, 0);

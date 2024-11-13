@@ -1,6 +1,7 @@
 package com.ct5106.StockManagementSystem.domain;
 
 import jakarta.persistence.Entity;
+
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class Product
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "department")
 	private Department department;
+	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "manufacturer")
